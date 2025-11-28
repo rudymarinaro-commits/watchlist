@@ -160,7 +160,6 @@ body,
   gap: 12px;
 }
 
-
 .tag.rating {
   background: #ffcc00;
   color: #000;
@@ -233,13 +232,28 @@ body,
   width: 420px;
   max-width: 90vw;
   box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-actions {
-  margin-top: 16px;
+  margin-top: 22px;
   display: flex;
-  gap: 10px;
+  gap: 18px;
   justify-content: flex-end;
+}
+
+
+/* MODAL form spacing */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  font-weight: 500;
+  margin-bottom: 4px;
 }
 
 /* ============================= */
@@ -255,6 +269,8 @@ select {
   padding: 6px;
   color: #fff;
   font-size: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ============================= */
@@ -359,54 +375,4 @@ select {
   background: none;
   border: none;
   color: #ff8a00;
-}
-
-/* ============================= */
-/* FORM NEI MODALI (ADD/EDIT)    */
-/* ============================= */
-
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-
-.modal-label {
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-  opacity: 0.9;
-}
-
-.modal-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* Input, select, textarea */
-.modal-input,
-.modal-select,
-.modal-textarea {
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
-  font-size: 0.95rem;
-  padding: 10px 12px;
-  transition: all 0.15s ease-in-out;
-}
-
-/* focus elegante */
-.modal-input:focus,
-.modal-select:focus,
-.modal-textarea:focus {
-  outline: 2px solid #ff8a00;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.modal-textarea {
-  min-height: 80px;
-  resize: none;
 }
