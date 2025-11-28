@@ -19,20 +19,6 @@ export default function WatchlistPage({ user, onLogout }: Props) {
   const [editItem, setEditItem] = useState<WatchlistItem | null>(null);
   const [deleteItem, setDeleteItem] = useState<WatchlistItem | null>(null);
 
-  // ============================
-  //   MODAL UI LOCK BODY SCROLL
-  // ============================
-  useEffect(() => {
-    if (showAddModal || editItem || deleteItem) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
-    }
-  }, [showAddModal, editItem, deleteItem]);
-
-  // ============================
-  //   FETCH WATCHLIST
-  // ============================
   useEffect(() => {
     api
       .getWatchlist()
@@ -43,17 +29,11 @@ export default function WatchlistPage({ user, onLogout }: Props) {
       .finally(() => setLoading(false));
   }, []);
 
-  // ============================
-  //   LOGOUT
-  // ============================
   async function handleLogout() {
     await api.logout();
     onLogout();
   }
 
-  // ============================
-  //   ADD ITEM
-  // ============================
   async function handleAddItem(data: any) {
     try {
       const created = await api.addWatchlistItem(data);
@@ -65,9 +45,6 @@ export default function WatchlistPage({ user, onLogout }: Props) {
     }
   }
 
-  // ============================
-  //   EDIT ITEM
-  // ============================
   async function handleEditItemSave(data: any) {
     if (!editItem) return;
     try {
@@ -82,9 +59,6 @@ export default function WatchlistPage({ user, onLogout }: Props) {
     }
   }
 
-  // ============================
-  //   DELETE ITEM
-  // ============================
   async function handleDeleteConfirm() {
     if (!deleteItem) return;
     try {

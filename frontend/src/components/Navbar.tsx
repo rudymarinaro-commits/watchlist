@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import type { UserInfo } from "../types";
 
 interface Props {
@@ -8,50 +8,52 @@ interface Props {
 
 export default function Navbar({ user, onLogout }: Props) {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
 
   const initial =
-    (user.name?.charAt(0) || user.email?.charAt(0) || "?").toUpperCase();
+    user.name && user.name.length > 0
+      ? user.name[0].toUpperCase()
+      : "U";
 
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  function toggleMenu() {
+    setOpen((prev) => !prev);
+  }
 
   return (
-    <nav className="navbar">
-      <span className="app-title">Personal Watchlist</span>
+    <header className="navbar">
+      <div className="app-title">Watchlist</div>
 
-      <div className="navbar-right" ref={ref}>
+      <div className="navbar-right">
+        {/* Avatar tondo */}
         <button
           className="avatar"
-          onClick={() => setOpen(!open)}
+          onClick={toggleMenu}
+          aria-label="Apri menu utente"
         >
           {initial}
         </button>
 
+        {/* Freccia fuori dal cerchio */}
         <button
           className={`avatar-arrow ${open ? "open" : ""}`}
-          onClick={() => setOpen(!open)}
+          onClick={toggleMenu}
+          aria-label="Apri menu utente"
         >
-          ▼
+          ▾
         </button>
 
         {open && (
           <div className="user-dropdown">
-            <div className="menu-name">{user.name} {user.surname}</div>
+            <div className="menu-name">{user.name}</div>
             <div className="menu-email">{user.email}</div>
-            <button className="dropdown-logout" onClick={onLogout}>
-              Logout
+            <button
+              className="dropdown-logout"
+              onClick={onLogout}
+            >
+              Esci
             </button>
           </div>
         )}
       </div>
-    </nav>
+    </header>
   );
 }
