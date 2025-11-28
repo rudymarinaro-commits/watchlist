@@ -1,0 +1,412 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #050521;
+  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background: #101030;
+  border-bottom: 1px solid #242452;
+}
+
+.app-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* AVATAR — circle */
+.avatar {
+  background: #ff8a00;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #000;
+  cursor: pointer;
+  border: none;
+}
+
+/* ARROW — fuori dal cerchio */
+.avatar-arrow {
+  color: #ff8a00;
+  font-size: 0.6rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.avatar-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* USER MENU */
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #15153a;
+  border: 1px solid #242452;
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 220px;
+  z-index: 9999;
+  box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.3);
+}
+
+.menu-name {
+  font-weight: 600;
+}
+
+.menu-email {
+  opacity: 0.85;
+  font-size: 0.82rem;
+  margin-bottom: 10px;
+}
+
+.dropdown-logout {
+  margin-top: 4px;
+  border-radius: 6px;
+  background: #ff3b3b;
+  padding: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.dropdown-logout:hover {
+  opacity: 0.75;
+}
+
+/* ============================= */
+/* WATCHLIST */
+/* ============================= */
+
+.watchlist-main {
+  flex: 1;
+  padding: 24px 32px 40px;
+}
+
+.watchlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.watchlist-card {
+  background: #15153a;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.tag-row {
+  display: flex;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #262654;
+}
+
+.card-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+}
+
+
+.tag.rating {
+  background: #ffcc00;
+  color: #000;
+}
+
+.notes {
+  font-size: 0.9rem;
+}
+
+/* ============================= */
+/* BUTTONS & SPACING             */
+/* ============================= */
+
+.btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.86;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #44446b;
+  color: #fff;
+}
+
+.btn-primary {
+  background: #ff8a00;
+  color: #fff;
+}
+
+.btn-danger {
+  background: #ff3b3b;
+  color: #fff;
+}
+
+
+/* ============================= */
+/* MODALS */
+/* ============================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+}
+
+.modal {
+  background: #15153a;
+  padding: 20px;
+  border-radius: 16px;
+  width: 420px;
+  max-width: 90vw;
+  box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.4);
+}
+
+.modal-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ============================= */
+/* INPUT */
+/* ============================= */
+
+input,
+textarea,
+select {
+  background: #0b0b24;
+  border: 1px solid #2f2f59;
+  border-radius: 8px;
+  padding: 6px;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* ============================= */
+/* LOGIN & REGISTER FORM         */
+/* ============================= */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form {
+  width: 360px;
+  background: #15153a;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.auth-form h1 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* Campo email + password */
+.auth-form-field {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.auth-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* INPUT veri e corretti */
+.auth-input {
+  border-radius: 8px;
+  border: 1px solid #30306a;
+  padding: 10px;
+  background: #0c0c28;
+  color: #f5f5f5;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.auth-input:focus {
+  outline: 2px solid #0066ff;
+}
+
+/* Bottone LOGIN / REGISTER */
+.auth-submit {
+  background: #ff8a00;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+  transition: all 0.15s;
+}
+
+.auth-submit:hover {
+  opacity: 0.75;
+}
+
+/* Alternanza login/register */
+.link-button {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #ff8a00;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper .auth-input {
+  padding-right: 38px;
+}
+
+.toggle-password-button {
+  position: absolute;
+  right: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #ff8a00;
+}
+
+/* ============================= */
+/* FORM NEI MODALI (ADD/EDIT)    */
+/* ============================= */
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+.modal-label {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.modal-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Input, select, textarea */
+.modal-input,
+.modal-select,
+.modal-textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  transition: all 0.15s ease-in-out;
+}
+
+/* focus elegante */
+.modal-input:focus,
+.modal-select:focus,
+.modal-textarea:focus {
+  outline: 2px solid #ff8a00;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.modal-textarea {
+  min-height: 80px;
+  resize: none;
+}
